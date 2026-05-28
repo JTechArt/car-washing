@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Lva — Wash Detail</title>
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { background: #0f1923; display: flex; justify-content: center; align-items: center; min-height: 100vh; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; }
+  .phone { width: 390px; height: 844px; background: #e8f0f7; border-radius: 44px; overflow: hidden; box-shadow: 0 30px 80px rgba(0,0,0,0.6); position: relative; display: flex; flex-direction: column; }
+  .map-preview { height: 280px; background: linear-gradient(135deg, #d4e6f1, #c8dff0, #d8e8d8); position: relative; }
+  .back-btn { position: absolute; top: 56px; left: 16px; width: 40px; height: 40px; background: white; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 18px; box-shadow: 0 2px 8px rgba(0,0,0,0.2); }
+  .map-pin { position: absolute; top: 50%; left: 50%; transform: translate(-50%,-50%); font-size: 40px; }
+  .sheet { flex: 1; background: white; border-radius: 24px 24px 0 0; margin-top: -24px; padding: 24px 24px 0; overflow-y: auto; }
+  .handle { width: 40px; height: 4px; background: #e5e7eb; border-radius: 2px; margin: 0 auto 20px; }
+  .wash-header { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 6px; }
+  h2 { font-size: 22px; font-weight: 700; color: #1a1a2e; }
+  .badge { background: #dcfce7; color: #166534; font-size: 12px; font-weight: 700; padding: 4px 10px; border-radius: 20px; }
+  .address { color: #6b7280; font-size: 14px; margin-bottom: 20px; }
+  .stats { display: flex; gap: 12px; margin-bottom: 24px; }
+  .stat { flex: 1; background: #f9fafb; border-radius: 12px; padding: 12px; text-align: center; }
+  .stat-val { font-size: 20px; font-weight: 700; color: #1B4F72; }
+  .stat-label { font-size: 11px; color: #9ca3af; margin-top: 2px; }
+  .section-title { font-size: 15px; font-weight: 700; color: #1a1a2e; margin-bottom: 12px; }
+  .service-row { display: flex; justify-content: space-between; align-items: center; padding: 12px 0; border-bottom: 1px solid #f3f4f6; }
+  .service-name { font-size: 14px; color: #374151; }
+  .service-detail { font-size: 13px; color: #9ca3af; }
+  .service-price { font-size: 15px; font-weight: 700; color: #1a1a2e; }
+  .vehicle-selector { margin: 20px 0; }
+  .vehicle-chip { display: inline-flex; align-items: center; gap: 6px; background: #1B4F72; color: white; border-radius: 20px; padding: 8px 14px; font-size: 13px; font-weight: 600; margin-right: 8px; }
+  .vehicle-chip-other { background: #f3f4f6; color: #374151; }
+  .book-btn { width: 100%; height: 56px; background: #27AE60; color: white; border: none; border-radius: 16px; font-size: 17px; font-weight: 700; cursor: pointer; margin-top: 20px; display: flex; align-items: center; justify-content: center; gap: 8px; }
+  .eta-bar { background: #eff6ff; border-radius: 12px; padding: 10px 14px; display: flex; align-items: center; gap: 8px; margin-bottom: 20px; font-size: 13px; color: #1e40af; font-weight: 600; }
+</style>
+</head>
+<body>
+<div class="phone">
+  <div class="map-preview">
+    <div class="back-btn">‹</div>
+    <div class="map-pin">📍</div>
+  </div>
+  <div class="sheet">
+    <div class="handle"></div>
+    <div class="wash-header"><h2>AutoSpa Kentron</h2><div class="badge">● Open</div></div>
+    <div class="address">📍 Tigranyan St 5, Yerevan</div>
+    <div class="eta-bar">🚗 ~8 min away · 3 bays available right now</div>
+    <div class="stats">
+      <div class="stat"><div class="stat-val">3</div><div class="stat-label">Free bays</div></div>
+      <div class="stat"><div class="stat-val">5 min</div><div class="stat-label">Next slot</div></div>
+      <div class="stat"><div class="stat-val">4.8★</div><div class="stat-label">Rating</div></div>
+    </div>
+    <div class="section-title">Select service</div>
+    <div class="service-row"><div><div class="service-name">Exterior Wash</div><div class="service-detail">25 min · Sedan</div></div><div class="service-price">3,500 ֏</div></div>
+    <div class="service-row"><div><div class="service-name">Full Wash + Interior</div><div class="service-detail">45 min · Sedan</div></div><div class="service-price">6,500 ֏</div></div>
+    <div class="vehicle-selector">
+      <div class="section-title">Your vehicle</div>
+      <div class="vehicle-chip">🚗 AM 1234 AB</div>
+      <div class="vehicle-chip vehicle-chip-other">+ Add</div>
+    </div>
+    <button class="book-btn">⚡ Book Now — 5 min slot</button>
+  </div>
+</div>
+</body>
+</html>

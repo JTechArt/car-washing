@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Lva — Garage</title>
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { background: #0f1923; display: flex; justify-content: center; align-items: center; min-height: 100vh; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; }
+  .phone { width: 390px; height: 844px; background: #fff; border-radius: 44px; overflow: hidden; box-shadow: 0 30px 80px rgba(0,0,0,0.6); display: flex; flex-direction: column; }
+  .header { background: #fff; padding: 56px 24px 16px; border-bottom: 1px solid #f3f4f6; }
+  h2 { font-size: 26px; font-weight: 800; color: #1a1a2e; }
+  .vehicle-card { margin: 12px 20px; background: #f9fafb; border-radius: 20px; padding: 18px; display: flex; gap: 16px; align-items: center; border: 2px solid transparent; }
+  .vehicle-card.default { border-color: #1B4F72; background: #eff6ff; }
+  .vehicle-icon { width: 56px; height: 56px; background: #dbeafe; border-radius: 14px; display: flex; align-items: center; justify-content: center; font-size: 28px; }
+  .vehicle-info h3 { font-size: 16px; font-weight: 700; color: #1a1a2e; }
+  .vehicle-info p { font-size: 13px; color: #6b7280; margin-top: 3px; }
+  .default-badge { background: #1B4F72; color: white; font-size: 10px; font-weight: 700; padding: 3px 8px; border-radius: 10px; margin-top: 4px; display: inline-block; }
+  .vehicle-actions { margin-left: auto; display: flex; flex-direction: column; gap: 6px; }
+  .icon-btn { width: 32px; height: 32px; border-radius: 50%; border: none; cursor: pointer; display: flex; align-items: center; justify-content: center; font-size: 14px; background: white; }
+  .add-card { margin: 12px 20px; border: 2px dashed #e5e7eb; border-radius: 20px; padding: 20px; display: flex; align-items: center; justify-content: center; gap: 10px; cursor: pointer; }
+  .add-card span { font-size: 15px; color: #9ca3af; font-weight: 600; }
+  .nav-bar { height: 68px; background: white; border-top: 1px solid #f3f4f6; display: flex; align-items: center; justify-content: space-around; padding-bottom: 8px; margin-top: auto; }
+  .nav-item { display: flex; flex-direction: column; align-items: center; gap: 3px; }
+  .nav-item span:first-child { font-size: 22px; }
+  .nav-item span:last-child { font-size: 10px; color: #9ca3af; }
+  .nav-item.active span:last-child { color: #1B4F72; font-weight: 700; }
+</style>
+</head>
+<body>
+<div class="phone">
+  <div class="header"><h2>My Garage</h2></div>
+  <div class="vehicle-card default">
+    <div class="vehicle-icon">🚗</div>
+    <div class="vehicle-info"><h3>My Sedan</h3><p>AM 1234 AB · Sedan</p><div class="default-badge">Default</div></div>
+    <div class="vehicle-actions"><div class="icon-btn">✏️</div><div class="icon-btn">🗑️</div></div>
+  </div>
+  <div class="vehicle-card">
+    <div class="vehicle-icon">🚙</div>
+    <div class="vehicle-info"><h3>Wife's SUV</h3><p>AM 5678 CD · SUV</p></div>
+    <div class="vehicle-actions"><div class="icon-btn">✏️</div><div class="icon-btn">🗑️</div></div>
+  </div>
+  <div class="add-card"><span>＋</span><span>Add Vehicle</span></div>
+  <div class="nav-bar">
+    <div class="nav-item"><span>🗺️</span><span>Map</span></div>
+    <div class="nav-item"><span>📋</span><span>Bookings</span></div>
+    <div class="nav-item active"><span>🚗</span><span>Garage</span></div>
+    <div class="nav-item"><span>👤</span><span>Profile</span></div>
+  </div>
+</div>
+</body>
+</html>
