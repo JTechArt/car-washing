@@ -1,6 +1,7 @@
 package am.lva.auth;
 
 import am.lva.BaseIntegrationTest;
+import am.lva.booking.VehicleRepository;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,9 +15,11 @@ class AuthControllerTest extends BaseIntegrationTest {
 
     @Autowired MockMvc mockMvc;
     @Autowired UserRepository userRepository;
+    @Autowired VehicleRepository vehicleRepository;
 
     @BeforeEach
     void cleanup() {
+        vehicleRepository.deleteAll();
         userRepository.deleteAll();
     }
 
