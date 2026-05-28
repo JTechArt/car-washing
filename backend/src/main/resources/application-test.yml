@@ -1,0 +1,12 @@
+spring:
+  jpa:
+    show-sql: true
+    hibernate:
+      ddl-auto: none
+  flyway:
+    enabled: true
+
+lva:
+  jwt:
+    secret: test-secret-key-for-testing-only-32c
+    expiry-ms: 3600000
