@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Lva Moderator — Bay Status</title>
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { background: #0f1923; display: flex; justify-content: center; align-items: center; min-height: 100vh; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; }
+  .tablet { width: 768px; height: 1024px; background: #f5f7fa; border-radius: 24px; overflow: hidden; box-shadow: 0 30px 80px rgba(0,0,0,0.6); display: flex; flex-direction: column; }
+  .topbar { height: 72px; background: #1B4F72; display: flex; align-items: center; padding: 0 28px; gap: 16px; }
+  .topbar h1 { color: white; font-size: 22px; font-weight: 700; }
+  .topbar-sub { color: rgba(255,255,255,0.7); font-size: 14px; }
+  .live-badge { margin-left: auto; background: rgba(255,255,255,0.15); color: white; border-radius: 20px; padding: 6px 14px; font-size: 13px; font-weight: 600; display: flex; align-items: center; gap: 6px; }
+  .pulse { width: 8px; height: 8px; background: #27AE60; border-radius: 50%; }
+  .time { color: rgba(255,255,255,0.8); font-size: 13px; }
+  .grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; padding: 24px; flex: 1; }
+  .bay-card { background: white; border-radius: 20px; padding: 24px; display: flex; flex-direction: column; box-shadow: 0 2px 8px rgba(0,0,0,0.06); border: 3px solid transparent; }
+  .bay-card.idle { border-color: #27AE60; }
+  .bay-card.occupied { border-color: #1B4F72; }
+  .bay-card.blocked { border-color: #E74C3C; }
+  .bay-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 16px; }
+  .bay-name { font-size: 20px; font-weight: 800; color: #1a1a2e; }
+  .status-badge { font-size: 13px; font-weight: 700; padding: 5px 14px; border-radius: 20px; }
+  .badge-idle { background: #dcfce7; color: #166534; }
+  .badge-occupied { background: #dbeafe; color: #1e40af; }
+  .badge-blocked { background: #fee2e2; color: #991b1b; }
+  .info-box { background: #f9fafb; border-radius: 12px; padding: 14px; margin-bottom: 16px; }
+  .info-row { display: flex; gap: 8px; margin-bottom: 6px; font-size: 14px; color: #374151; }
+  .info-row:last-child { margin-bottom: 0; }
+  .info-label { color: #9ca3af; font-size: 13px; width: 70px; flex-shrink: 0; }
+  .timer { font-size: 32px; font-weight: 800; color: #1B4F72; }
+  .timer-label { font-size: 12px; color: #9ca3af; margin-bottom: 16px; margin-top: 2px; }
+  .action-btn { width: 100%; height: 52px; border: none; border-radius: 14px; font-size: 16px; font-weight: 700; cursor: pointer; margin-top: auto; }
+  .btn-blue { background: #1B4F72; color: white; }
+  .btn-orange { background: #F39C12; color: white; }
+  .btn-green { background: #27AE60; color: white; }
+  .btn-gray { background: #f3f4f6; color: #6b7280; }
+  .walk-in-btn { width: 100%; height: 44px; border: 2px dashed #d1d5db; background: none; border-radius: 12px; font-size: 14px; font-weight: 600; color: #6b7280; cursor: pointer; margin-top: 8px; }
+  .empty-state { flex: 1; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 6px; color: #9ca3af; font-size: 14px; padding: 16px 0; }
+  .empty-icon { font-size: 36px; }
+</style>
+</head>
+<body>
+<div class="tablet">
+  <div class="topbar">
+    <h1>AutoSpa Kentron</h1>
+    <span class="topbar-sub">· 4 bays</span>
+    <div class="live-badge"><div class="pulse"></div> Live</div>
+    <span class="time">10:32 AM</span>
+  </div>
+  <div class="grid">
+    <div class="bay-card occupied">
+      <div class="bay-header"><div class="bay-name">Bay 1</div><div class="status-badge badge-occupied">Washing</div></div>
+      <div class="info-box">
+        <div class="info-row"><span class="info-label">Vehicle</span>AM 1234 AB · Sedan</div>
+        <div class="info-row"><span class="info-label">Service</span>Exterior Wash</div>
+        <div class="info-row"><span class="info-label">Booking</span>App #2041</div>
+      </div>
+      <div class="timer">12:30</div>
+      <div class="timer-label">Time remaining</div>
+      <button class="action-btn btn-orange">Mark as Finishing</button>
+    </div>
+    <div class="bay-card idle">
+      <div class="bay-header"><div class="bay-name">Bay 2</div><div class="status-badge badge-idle">Available</div></div>
+      <div class="empty-state"><div class="empty-icon">✅</div><span>Ready for next vehicle</span><span>Next booking: 11:00 AM</span></div>
+      <button class="action-btn btn-green">Mark Arrived</button>
+      <button class="walk-in-btn">＋ Walk-In Customer</button>
+    </div>
+    <div class="bay-card occupied">
+      <div class="bay-header"><div class="bay-name">Bay 3</div><div class="status-badge badge-occupied">Arrived</div></div>
+      <div class="info-box">
+        <div class="info-row"><span class="info-label">Vehicle</span>AM 5678 CD · SUV</div>
+        <div class="info-row"><span class="info-label">Service</span>Full Wash + Interior</div>
+        <div class="info-row"><span class="info-label">Booking</span>App #2042</div>
+      </div>
+      <div style="padding:12px 0;font-size:13px;color:#6b7280;text-align:center">Vehicle on site — ready to start</div>
+      <button class="action-btn btn-blue">Start Washing</button>
+    </div>
+    <div class="bay-card blocked">
+      <div class="bay-header"><div class="bay-name">Bay 4</div><div class="status-badge badge-blocked">Blocked</div></div>
+      <div class="info-box">
+        <div class="info-row"><span class="info-label">Type</span>Walk-in customer</div>
+        <div class="info-row"><span class="info-label">Est.</span>~45 min remaining</div>
+      </div>
+      <div class="timer">43:10</div>
+      <div class="timer-label">Estimated remaining</div>
+      <button class="action-btn btn-gray">Release Bay</button>
+    </div>
+  </div>
+</div>
+</body>
+</html>
