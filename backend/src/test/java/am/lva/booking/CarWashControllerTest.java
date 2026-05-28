@@ -24,13 +24,19 @@ class CarWashControllerTest extends BaseIntegrationTest {
     @Autowired CarWashRepository carWashRepository;
     @Autowired BayRepository bayRepository;
     @Autowired VehicleRepository vehicleRepository;
+    @Autowired PriceRepository priceRepository;
+    @Autowired BookingRepository bookingRepository;
+    @Autowired WalkInRepository walkInRepository;
 
     private String ownerToken;
 
     @BeforeEach
     void setup() {
+        walkInRepository.deleteAll();
+        bookingRepository.deleteAll();
         vehicleRepository.deleteAll();
         bayRepository.deleteAll();
+        priceRepository.deleteAll();
         carWashRepository.deleteAll();
         userRepository.deleteAll();
 
