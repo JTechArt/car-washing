@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Lva Admin — Owner Dashboard</title>
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { background: #f5f7fa; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; display: flex; min-height: 100vh; }
+  .sidebar { width: 220px; background: #1B4F72; padding: 0; flex-shrink: 0; }
+  .sidebar-logo { display: flex; align-items: center; gap: 10px; padding: 24px 20px 20px; border-bottom: 1px solid rgba(255,255,255,0.1); }
+  .logo-box { width: 34px; height: 34px; background: rgba(255,255,255,0.15); border-radius: 8px; display: flex; align-items: center; justify-content: center; color: white; font-weight: 800; font-size: 15px; }
+  .sidebar-logo span { color: white; font-weight: 700; font-size: 17px; }
+  .nav-section { padding: 16px 12px 6px; font-size: 10px; font-weight: 700; color: rgba(255,255,255,0.4); text-transform: uppercase; letter-spacing: 1px; }
+  .nav-item { display: flex; align-items: center; gap: 10px; padding: 10px 20px; color: rgba(255,255,255,0.7); font-size: 14px; cursor: pointer; }
+  .nav-item.active { background: rgba(255,255,255,0.15); color: white; font-weight: 600; }
+  .main { flex: 1; padding: 28px 32px; overflow-y: auto; }
+  .topbar { display: flex; justify-content: space-between; align-items: center; margin-bottom: 24px; }
+  h1 { font-size: 22px; font-weight: 800; color: #1a1a2e; }
+  .topbar-sub { font-size: 13px; color: #6b7280; margin-top: 3px; }
+  .live-chip { display: flex; align-items: center; gap: 6px; background: #dcfce7; color: #166534; border-radius: 20px; padding: 5px 12px; font-size: 13px; font-weight: 700; }
+  .pulse { width: 7px; height: 7px; background: #27AE60; border-radius: 50%; }
+  .avatar { width: 34px; height: 34px; background: #1B4F72; border-radius: 50%; display: flex; align-items: center; justify-content: center; color: white; font-weight: 700; font-size: 13px; margin-left: 10px; }
+  .stats { display: grid; grid-template-columns: repeat(4, 1fr); gap: 14px; margin-bottom: 20px; }
+  .stat-card { background: white; border-radius: 14px; padding: 18px; box-shadow: 0 1px 4px rgba(0,0,0,0.06); }
+  .stat-label { font-size: 12px; color: #9ca3af; margin-bottom: 6px; }
+  .stat-value { font-size: 26px; font-weight: 800; color: #1a1a2e; }
+  .stat-sub { font-size: 11px; color: #27AE60; margin-top: 3px; font-weight: 600; }
+  .grid2 { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+  .card { background: white; border-radius: 14px; padding: 20px; box-shadow: 0 1px 4px rgba(0,0,0,0.06); }
+  .card-title { font-size: 15px; font-weight: 700; color: #1a1a2e; margin-bottom: 14px; display: flex; justify-content: space-between; }
+  .card-title a { font-size: 12px; color: #1B4F72; font-weight: 600; text-decoration: none; }
+  .bay-row { display: flex; align-items: center; gap: 10px; padding: 10px 0; border-bottom: 1px solid #f3f4f6; }
+  .bay-row:last-child { border-bottom: none; }
+  .dot { width: 10px; height: 10px; border-radius: 50%; flex-shrink: 0; }
+  .dot-green { background: #27AE60; }
+  .dot-blue { background: #3b82f6; }
+  .dot-red { background: #E74C3C; }
+  .bay-name { font-size: 13px; font-weight: 600; color: #1a1a2e; width: 52px; }
+  .bay-info { font-size: 12px; color: #6b7280; flex: 1; }
+  .chart-area { height: 140px; background: #f9fafb; border-radius: 10px; display: flex; align-items: flex-end; padding: 12px; gap: 6px; margin-bottom: 8px; }
+  .bar { flex: 1; border-radius: 3px 3px 0 0; }
+  .bar-labels { display: flex; justify-content: space-between; font-size: 10px; color: #9ca3af; }
+</style>
+</head>
+<body>
+<div class="sidebar">
+  <div class="sidebar-logo"><div class="logo-box">Լ</div><span>Lva</span></div>
+  <div class="nav-section">Operations</div>
+  <div class="nav-item active">📊 Dashboard</div>
+  <div class="nav-item">🔴 Bay Status</div>
+  <div class="nav-item">📋 Bookings</div>
+  <div class="nav-section">Settings</div>
+  <div class="nav-item">💰 Pricing</div>
+  <div class="nav-item">📈 Analytics</div>
+  <div class="nav-item">⚙️ Settings</div>
+</div>
+<div class="main">
+  <div class="topbar">
+    <div><h1>AutoSpa Kentron</h1><div class="topbar-sub">Thursday, May 28 · Good morning 👋</div></div>
+    <div style="display:flex;align-items:center;gap:8px">
+      <div class="live-chip"><div class="pulse"></div>4 bays live</div>
+      <div class="avatar">AK</div>
+    </div>
+  </div>
+  <div class="stats">
+    <div class="stat-card"><div class="stat-label">Today's Revenue</div><div class="stat-value">47,500 ֏</div><div class="stat-sub">↑ 12% vs yesterday</div></div>
+    <div class="stat-card"><div class="stat-label">Bookings Today</div><div class="stat-value">18</div><div class="stat-sub">↑ 3 vs yesterday</div></div>
+    <div class="stat-card"><div class="stat-label">Active Bays</div><div class="stat-value">2</div><div class="stat-sub">2 bays occupied</div></div>
+    <div class="stat-card"><div class="stat-label">Avg Wait Time</div><div class="stat-value">7 min</div><div class="stat-sub">↓ 5 min vs last week</div></div>
+  </div>
+  <div class="grid2">
+    <div class="card">
+      <div class="card-title">Live Bay Status <a href="#">View all →</a></div>
+      <div class="bay-row"><div class="dot dot-blue"></div><div class="bay-name">Bay 1</div><div class="bay-info">Washing · AM 1234 AB · 12 min left</div></div>
+      <div class="bay-row"><div class="dot dot-green"></div><div class="bay-name">Bay 2</div><div class="bay-info">Available · Next at 11:00</div></div>
+      <div class="bay-row"><div class="dot dot-blue"></div><div class="bay-name">Bay 3</div><div class="bay-info">Arrived · AM 5678 CD</div></div>
+      <div class="bay-row"><div class="dot dot-red"></div><div class="bay-name">Bay 4</div><div class="bay-info">Walk-in · ~43 min remaining</div></div>
+    </div>
+    <div class="card">
+      <div class="card-title">Revenue This Week</div>
+      <div class="chart-area">
+        <div class="bar" style="height:60%;background:#dbeafe"></div>
+        <div class="bar" style="height:75%;background:#dbeafe"></div>
+        <div class="bar" style="height:55%;background:#dbeafe"></div>
+        <div class="bar" style="height:90%;background:#1B4F72"></div>
+        <div class="bar" style="height:70%;background:#dbeafe"></div>
+        <div class="bar" style="height:85%;background:#dbeafe"></div>
+        <div class="bar" style="height:40%;background:#e5e7eb"></div>
+      </div>
+      <div class="bar-labels"><span>Mon</span><span>Tue</span><span>Wed</span><span style="color:#1B4F72;font-weight:700">Thu</span><span>Fri</span><span>Sat</span><span>Sun</span></div>
+    </div>
+  </div>
+</div>
+</body>
+</html>

@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Lva Admin — Login</title>
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { background: #f5f7fa; display: flex; justify-content: center; align-items: center; min-height: 100vh; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; }
+  .container { display: flex; width: 900px; height: 560px; border-radius: 24px; overflow: hidden; box-shadow: 0 20px 60px rgba(0,0,0,0.15); }
+  .left { width: 400px; background: #1B4F72; padding: 56px 48px; display: flex; flex-direction: column; justify-content: center; }
+  .left h1 { color: white; font-size: 32px; font-weight: 800; margin-bottom: 12px; }
+  .left p { color: rgba(255,255,255,0.7); font-size: 15px; line-height: 1.6; margin-bottom: 36px; }
+  .feature { display: flex; align-items: center; gap: 12px; margin-bottom: 14px; }
+  .feature-icon { width: 36px; height: 36px; background: rgba(255,255,255,0.15); border-radius: 10px; display: flex; align-items: center; justify-content: center; font-size: 17px; flex-shrink: 0; }
+  .feature span { color: rgba(255,255,255,0.85); font-size: 14px; }
+  .right { flex: 1; background: white; padding: 56px 48px; display: flex; flex-direction: column; justify-content: center; }
+  .logo { display: flex; align-items: center; gap: 12px; margin-bottom: 32px; }
+  .logo-box { width: 40px; height: 40px; background: #1B4F72; border-radius: 10px; display: flex; align-items: center; justify-content: center; color: white; font-size: 18px; font-weight: 800; }
+  .logo span { font-size: 18px; font-weight: 700; color: #1a1a2e; }
+  h3 { font-size: 22px; font-weight: 700; color: #1a1a2e; margin-bottom: 4px; }
+  .sub { font-size: 14px; color: #6b7280; margin-bottom: 28px; }
+  label { display: block; font-size: 13px; font-weight: 600; color: #374151; margin-bottom: 6px; }
+  input { display: block; width: 100%; height: 46px; border: 1.5px solid #e5e7eb; border-radius: 10px; padding: 0 14px; font-size: 15px; margin-bottom: 16px; outline: none; }
+  input:focus { border-color: #1B4F72; }
+  .btn { width: 100%; height: 46px; background: #1B4F72; color: white; border: none; border-radius: 10px; font-size: 16px; font-weight: 700; cursor: pointer; }
+</style>
+</head>
+<body>
+<div class="container">
+  <div class="left">
+    <h1>Lva Admin</h1>
+    <p>Manage your car wash operations, pricing, and analytics.</p>
+    <div class="feature"><div class="feature-icon">📊</div><span>Real-time revenue analytics</span></div>
+    <div class="feature"><div class="feature-icon">🔴</div><span>Live bay status monitoring</span></div>
+    <div class="feature"><div class="feature-icon">💳</div><span>Multi-channel payment tracking</span></div>
+    <div class="feature"><div class="feature-icon">🏢</div><span>Corporate account management</span></div>
+  </div>
+  <div class="right">
+    <div class="logo"><div class="logo-box">Լ</div><span>Lva</span></div>
+    <h3>Welcome back</h3>
+    <p class="sub">Sign in to your operations portal</p>
+    <label>Phone Number</label>
+    <input type="tel" placeholder="+374 77 123 456">
+    <label>Password</label>
+    <input type="password" placeholder="••••••••">
+    <button class="btn">Sign In</button>
+  </div>
+</div>
+</body>
+</html>

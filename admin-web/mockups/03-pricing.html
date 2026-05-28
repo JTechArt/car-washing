@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Lva Admin — Pricing</title>
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { background: #f5f7fa; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; display: flex; min-height: 100vh; }
+  .sidebar { width: 220px; background: #1B4F72; padding: 0; flex-shrink: 0; }
+  .sidebar-logo { display: flex; align-items: center; gap: 10px; padding: 24px 20px 20px; border-bottom: 1px solid rgba(255,255,255,0.1); }
+  .logo-box { width: 34px; height: 34px; background: rgba(255,255,255,0.15); border-radius: 8px; display: flex; align-items: center; justify-content: center; color: white; font-weight: 800; font-size: 15px; }
+  .sidebar-logo span { color: white; font-weight: 700; font-size: 17px; }
+  .nav-item { display: flex; align-items: center; gap: 10px; padding: 10px 20px; color: rgba(255,255,255,0.7); font-size: 14px; cursor: pointer; margin-top: 4px; }
+  .nav-item.active { background: rgba(255,255,255,0.15); color: white; font-weight: 600; }
+  .main { flex: 1; padding: 28px 32px; }
+  h1 { font-size: 22px; font-weight: 800; color: #1a1a2e; margin-bottom: 6px; }
+  .sub { font-size: 13px; color: #6b7280; margin-bottom: 24px; }
+  .card { background: white; border-radius: 14px; box-shadow: 0 1px 4px rgba(0,0,0,0.06); overflow: hidden; }
+  table { width: 100%; border-collapse: collapse; }
+  th { background: #f9fafb; padding: 12px 20px; text-align: left; font-size: 12px; font-weight: 700; color: #6b7280; text-transform: uppercase; letter-spacing: 0.5px; }
+  td { padding: 14px 20px; border-top: 1px solid #f3f4f6; font-size: 14px; }
+  .vehicle-cell { display: flex; align-items: center; gap: 10px; }
+  .v-icon { font-size: 20px; }
+  .v-name { font-weight: 600; color: #1a1a2e; }
+  .v-dur { font-size: 11px; color: #9ca3af; margin-top: 1px; }
+  .price-wrap { display: flex; align-items: center; gap: 4px; }
+  .price-input { width: 100px; height: 34px; border: 1.5px solid #e5e7eb; border-radius: 8px; padding: 0 10px; font-size: 14px; font-weight: 600; text-align: right; outline: none; }
+  .price-input:focus { border-color: #1B4F72; }
+  .amd { font-size: 12px; color: #9ca3af; }
+  .save-bar { display: flex; justify-content: flex-end; gap: 10px; padding: 16px 20px; background: #f9fafb; border-top: 1px solid #f3f4f6; }
+  .btn-cancel { height: 38px; padding: 0 18px; background: white; border: 1.5px solid #e5e7eb; border-radius: 8px; font-size: 14px; font-weight: 600; cursor: pointer; color: #374151; }
+  .btn-save { height: 38px; padding: 0 22px; background: #1B4F72; color: white; border: none; border-radius: 8px; font-size: 14px; font-weight: 700; cursor: pointer; }
+</style>
+</head>
+<body>
+<div class="sidebar">
+  <div class="sidebar-logo"><div class="logo-box">Լ</div><span>Lva</span></div>
+  <div class="nav-item">📊 Dashboard</div>
+  <div class="nav-item">🔴 Bay Status</div>
+  <div class="nav-item">📋 Bookings</div>
+  <div class="nav-item active">💰 Pricing</div>
+  <div class="nav-item">📈 Analytics</div>
+</div>
+<div class="main">
+  <h1>Pricing Management</h1>
+  <p class="sub">Set prices per vehicle type and service. Changes apply immediately in the booking app.</p>
+  <div class="card">
+    <table>
+      <thead>
+        <tr>
+          <th>Vehicle</th>
+          <th>Exterior Wash</th>
+          <th>Interior Clean</th>
+          <th>Full Wash + Interior</th>
+          <th>Premium Detail</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><div class="vehicle-cell"><span class="v-icon">🚗</span><div><div class="v-name">Sedan</div><div class="v-dur">25 / 20 / 45 / 90 min</div></div></div></td>
+          <td><div class="price-wrap"><input class="price-input" value="3,500"><span class="amd">֏</span></div></td>
+          <td><div class="price-wrap"><input class="price-input" value="2,500"><span class="amd">֏</span></div></td>
+          <td><div class="price-wrap"><input class="price-input" value="6,500"><span class="amd">֏</span></div></td>
+          <td><div class="price-wrap"><input class="price-input" value="12,000"><span class="amd">֏</span></div></td>
+        </tr>
+        <tr>
+          <td><div class="vehicle-cell"><span class="v-icon">🚙</span><div><div class="v-name">Crossover</div><div class="v-dur">30 / 25 / 55 / 100 min</div></div></div></td>
+          <td><div class="price-wrap"><input class="price-input" value="4,000"><span class="amd">֏</span></div></td>
+          <td><div class="price-wrap"><input class="price-input" value="3,000"><span class="amd">֏</span></div></td>
+          <td><div class="price-wrap"><input class="price-input" value="7,500"><span class="amd">֏</span></div></td>
+          <td><div class="price-wrap"><input class="price-input" value="14,000"><span class="amd">֏</span></div></td>
+        </tr>
+        <tr>
+          <td><div class="vehicle-cell"><span class="v-icon">🛻</span><div><div class="v-name">SUV</div><div class="v-dur">35 / 30 / 65 / 120 min</div></div></div></td>
+          <td><div class="price-wrap"><input class="price-input" value="5,000"><span class="amd">֏</span></div></td>
+          <td><div class="price-wrap"><input class="price-input" value="3,500"><span class="amd">֏</span></div></td>
+          <td><div class="price-wrap"><input class="price-input" value="9,000"><span class="amd">֏</span></div></td>
+          <td><div class="price-wrap"><input class="price-input" value="16,000"><span class="amd">֏</span></div></td>
+        </tr>
+        <tr>
+          <td><div class="vehicle-cell"><span class="v-icon">🏎️</span><div><div class="v-name">Coupe</div><div class="v-dur">25 / 20 / 45 / 90 min</div></div></div></td>
+          <td><div class="price-wrap"><input class="price-input" value="3,500"><span class="amd">֏</span></div></td>
+          <td><div class="price-wrap"><input class="price-input" value="2,500"><span class="amd">֏</span></div></td>
+          <td><div class="price-wrap"><input class="price-input" value="6,500"><span class="amd">֏</span></div></td>
+          <td><div class="price-wrap"><input class="price-input" value="13,000"><span class="amd">֏</span></div></td>
+        </tr>
+      </tbody>
+    </table>
+    <div class="save-bar">
+      <button class="btn-cancel">Discard</button>
+      <button class="btn-save">Save Prices</button>
+    </div>
+  </div>
+</div>
+</body>
+</html>
