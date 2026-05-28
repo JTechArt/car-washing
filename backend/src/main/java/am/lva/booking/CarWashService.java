@@ -4,6 +4,7 @@ import am.lva.auth.UserRepository;
 import am.lva.booking.dto.*;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 import java.util.UUID;
@@ -16,6 +17,7 @@ public class CarWashService {
     private final BayRepository bayRepository;
     private final UserRepository userRepository;
 
+    @Transactional
     public CarWashResponse create(CarWashRequest request, UUID ownerId) {
         var owner = userRepository.findById(ownerId).orElseThrow();
         var wash = new CarWash();
@@ -27,12 +29,14 @@ public class CarWashService {
         return CarWashResponse.from(carWashRepository.save(wash));
     }
 
+    @Transactional(readOnly = true)
     public List<CarWashResponse> listByOwner(UUID ownerId) {
         var owner = userRepository.findById(ownerId).orElseThrow();
         return carWashRepository.findByOwner(owner).stream()
                 .map(CarWashResponse::from).toList();
     }
 
+    @Transactional
     public BayResponse createBay(UUID carWashId, BayRequest request) {
         var wash = carWashRepository.findById(carWashId).orElseThrow();
         var bay = new Bay();
@@ -42,11 +46,13 @@ public class CarWashService {
         return BayResponse.from(bayRepository.save(bay));
     }
 
+    @Transactional(readOnly = true)
     public List<BayResponse> listBays(UUID carWashId) {
         return bayRepository.findByCarWashId(carWashId).stream()
                 .map(BayResponse::from).toList();
     }
 
+    @Transactional(readOnly = true)
     public List<PublicCarWashResponse> getPublicListing() {
         return carWashRepository.findAll().stream().map(wash -> {
             var bays = bayRepository.findByCarWashId(wash.getId());

@@ -25,6 +25,9 @@ public class BookingService {
     @Transactional
     public BookingResponse create(BookingRequest request, UUID userId) {
         var vehicle = vehicleRepository.findById(request.vehicleId()).orElseThrow();
+        if (!vehicle.getUser().getId().equals(userId)) {
+            throw new IllegalArgumentException("Vehicle does not belong to requesting user");
+        }
         var serviceType = ServiceType.valueOf(request.serviceType());
         var price = priceRepository.findByCarWashIdAndVehicleTypeAndServiceType(
                 request.carWashId(), vehicle.getType(), serviceType).orElseThrow();
