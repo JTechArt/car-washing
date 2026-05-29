@@ -1,0 +1,215 @@
+# =============================================================================
+# Lva monorepo — root .gitignore
+# Covers: backend (Java/Spring/Maven), admin-web (Next.js), mobile (Flutter)
+# =============================================================================
+
+# -----------------------------------------------------------------------------
+# Secrets & credentials (never commit)
+# -----------------------------------------------------------------------------
+.env
+.env.*
+!.env.example
+!.env.*.example
+*.pem
+*.key
+*.p12
+*.jks
+*.keystore
+*.pfx
+credentials.json
+**/secrets/
+**/*-credentials.json
+**/*-secrets.json
+
+# -----------------------------------------------------------------------------
+# OS & editor noise
+# -----------------------------------------------------------------------------
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+Desktop.ini
+*~
+*.swp
+*.swo
+*.bak
+*.tmp
+*.orig
+
+# -----------------------------------------------------------------------------
+# IDE — IntelliJ / Android Studio
+# -----------------------------------------------------------------------------
+.idea/
+*.iml
+*.ipr
+*.iws
+out/
+.idea_modules/
+
+# Eclipse / STS
+.classpath
+.project
+.settings/
+.factorypath
+.apt_generated/
+.sts4-cache/
+.springBeans
+
+# VS Code (keep shared team config if added later via negation)
+.vscode/*
+!.vscode/extensions.json
+!.vscode/settings.json
+!.vscode/launch.json
+!.vscode/tasks.json
+
+# Cursor — keep project rules, ignore local/cache state
+.cursor/*
+!.cursor/rules/
+!.cursor/rules/**
+
+# -----------------------------------------------------------------------------
+# Backend — Java 21 / Spring Boot / Maven
+# -----------------------------------------------------------------------------
+backend/target/
+**/target/
+*.class
+*.jar
+!**/src/main/**/lib/**/*.jar
+!**/.mvn/wrapper/maven-wrapper.jar
+*.war
+*.ear
+hs_err_pid*
+replay_pid*
+.mvn/timing.properties
+.mvn/wrapper/maven-wrapper.jar.sha256
+dependency-reduced-pom.xml
+release.properties
+pom.xml.tag
+pom.xml.releaseBackup
+pom.xml.versionsBackup
+pom.xml.next
+.flattened-pom.xml
+
+# Spring / Java tooling
+.springBeans
+.apt_generated/
+.attach_pid*
+*.hprof
+
+# Test & coverage (backend)
+**/jacoco.exec
+**/jacoco/
+**/surefire-reports/
+**/failsafe-reports/
+**/test-output/
+
+# -----------------------------------------------------------------------------
+# Admin web — Next.js 14 / Node.js / TypeScript
+# -----------------------------------------------------------------------------
+admin-web/node_modules/
+**/node_modules/
+admin-web/.next/
+**/.next/
+admin-web/out/
+**/out/
+admin-web/.vercel/
+**/.vercel/
+admin-web/.turbo/
+**/.turbo/
+*.tsbuildinfo
+.eslintcache
+.stylelintcache
+.parcel-cache
+.turbo
+dist/
+build/
+coverage/
+.nyc_output/
+*.lcov
+
+# OpenAPI client (regenerate via: npm run generate-api)
+admin-web/lib/api/generated/
+
+# -----------------------------------------------------------------------------
+# Mobile — Flutter / Dart
+# -----------------------------------------------------------------------------
+mobile/.dart_tool/
+**/.dart_tool/
+mobile/.flutter-plugins
+**/.flutter-plugins
+mobile/.flutter-plugins-dependencies
+**/.flutter-plugins-dependencies
+mobile/.packages
+**/.packages
+mobile/build/
+**/build/
+mobile/.pub-cache/
+**/.pub-cache/
+mobile/.pub/
+**/.pub/
+
+# Riverpod / build_runner generated
+*.g.dart
+*.freezed.dart
+*.mocks.dart
+*.gen.dart
+
+# Flutter platform folders (created by flutter create / build)
+mobile/ios/Pods/
+mobile/ios/.symlinks/
+mobile/ios/Flutter/Flutter.framework
+mobile/ios/Flutter/Flutter.podspec
+mobile/ios/Flutter/ephemeral/
+mobile/ios/ServiceDefinitions.json
+mobile/ios/Runner/GeneratedPluginRegistrant.*
+mobile/android/.gradle/
+mobile/android/captures/
+mobile/android/local.properties
+mobile/android/key.properties
+mobile/android/**/GeneratedPluginRegistrant.java
+mobile/android/**/GeneratedPluginRegistrant.kt
+mobile/linux/flutter/ephemeral/
+mobile/macos/Flutter/ephemeral/
+mobile/windows/flutter/ephemeral/
+
+# -----------------------------------------------------------------------------
+# Docker & local data
+# -----------------------------------------------------------------------------
+pgdata/
+**/pgdata/
+docker-data/
+*.volume
+
+# -----------------------------------------------------------------------------
+# Logs & diagnostics
+# -----------------------------------------------------------------------------
+*.log
+logs/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+lerna-debug.log*
+
+# -----------------------------------------------------------------------------
+# E2E / browser testing (future)
+# -----------------------------------------------------------------------------
+playwright-report/
+playwright/.cache/
+test-results/
+blob-report/
+cypress/videos/
+cypress/screenshots/
+
+# -----------------------------------------------------------------------------
+# Misc tooling caches
+# -----------------------------------------------------------------------------
+.cache/
+.snyk-delta/
+.terraform/
+*.tfstate
+*.tfstate.*
+.terraform.lock.hcl
