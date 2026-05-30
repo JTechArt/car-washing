@@ -1,6 +1,7 @@
 package am.lva.booking;
 
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.EntityGraph;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 
@@ -20,6 +21,14 @@ public interface BookingRepository extends JpaRepository<Booking, UUID> {
                                   @Param("startsAt") OffsetDateTime startsAt,
                                   @Param("endsAt") OffsetDateTime endsAt);
 
-    @org.springframework.data.jpa.repository.EntityGraph(attributePaths = {"bay", "bay.carWash", "vehicle"})
-    java.util.List<Booking> findByUserIdOrderByStartsAtDesc(java.util.UUID userId);
+    @EntityGraph(attributePaths = {"bay", "bay.carWash", "vehicle"})
+    List<Booking> findByUserIdOrderByStartsAtDesc(UUID userId);
+
+    @Query("""
+        SELECT b FROM Booking b
+        WHERE b.bay.id = :bayId
+        AND b.status NOT IN ('COMPLETED', 'CANCELLED')
+        ORDER BY b.startsAt DESC
+        """)
+    List<Booking> findActiveByBayId(@Param("bayId") UUID bayId);
 }

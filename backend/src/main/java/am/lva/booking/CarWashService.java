@@ -16,6 +16,7 @@ public class CarWashService {
     private final CarWashRepository carWashRepository;
     private final BayRepository bayRepository;
     private final UserRepository userRepository;
+    private final BookingRepository bookingRepository;
 
     @Transactional
     public CarWashResponse create(CarWashRequest request, UUID ownerId) {
@@ -49,7 +50,14 @@ public class CarWashService {
     @Transactional(readOnly = true)
     public List<BayResponse> listBays(UUID carWashId) {
         return bayRepository.findByCarWashId(carWashId).stream()
-                .map(BayResponse::from).toList();
+                .map(bay -> {
+                    var activeBookings = bookingRepository.findActiveByBayId(bay.getId());
+                    if (activeBookings.isEmpty()) {
+                        return BayResponse.from(bay);
+                    }
+                    var booking = activeBookings.get(0);
+                    return BayResponse.from(bay, booking.getId(), booking.getStatus().name());
+                }).toList();
     }
 
     @Transactional(readOnly = true)
