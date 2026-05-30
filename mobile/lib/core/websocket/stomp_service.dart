@@ -34,7 +34,8 @@ class StompService {
   void subscribeToBayUpdates(String carWashId, BayStatusCallback onUpdate) {
     final topic = '/topic/carwash/$carWashId/bays';
     if (_subscriptions.containsKey(topic)) return;
-    _client?.subscribe(
+    if (_client == null) return;
+    final unsub = _client!.subscribe(
       destination: topic,
       callback: (frame) {
         if (frame.body == null) return;
@@ -42,6 +43,7 @@ class StompService {
         onUpdate(data['bayId'] as String, data['status'] as String);
       },
     );
+    _subscriptions[topic] = unsub;
   }
 
   void unsubscribeFromCarWash(String carWashId) {
