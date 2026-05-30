@@ -6,6 +6,7 @@ import '../models/vehicle.dart';
 import '../models/slot.dart';
 import '../models/booking.dart';
 import 'api_exception.dart';
+import '../../moderator_app/models/moderator_bay.dart';
 
 class ApiClient {
   static final ApiClient _instance = ApiClient._internal();
@@ -107,5 +108,40 @@ class ApiClient {
     return (resp.data as List)
         .map((j) => Booking.fromJson(j as Map<String, dynamic>))
         .toList();
+  }
+
+  // Moderator: car washes managed by this user
+  Future<List<CarWash>> getOwnerCarWashes() async {
+    final resp = await _dio.get('/api/owner/car-washes');
+    return (resp.data as List)
+        .map((j) => CarWash.fromJson(j as Map<String, dynamic>))
+        .toList();
+  }
+
+  // Moderator: bays with active booking info
+  Future<List<ModeratorBay>> getModeratorBays(String carWashId) async {
+    final resp =
+        await _dio.get('/api/owner/car-washes/$carWashId/bays');
+    return (resp.data as List)
+        .map((j) => ModeratorBay.fromJson(j as Map<String, dynamic>))
+        .toList();
+  }
+
+  // Moderator: update booking status
+  Future<void> updateBookingStatus(
+      String bookingId, String status) async {
+    await _dio.put(
+      '/api/moderator/bookings/$bookingId/status',
+      data: {'status': status},
+    );
+  }
+
+  // Moderator: create walk-in block
+  Future<void> createWalkIn(
+      String bayId, int estimatedDurationMinutes) async {
+    await _dio.post(
+      '/api/moderator/bays/$bayId/walk-ins',
+      data: {'estimatedDurationMinutes': estimatedDurationMinutes},
+    );
   }
 }
