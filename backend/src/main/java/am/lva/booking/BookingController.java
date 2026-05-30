@@ -40,6 +40,11 @@ public class BookingController {
         return bookingService.updateStatus(bookingId, request);
     }
 
+    @PutMapping("/api/moderator/bays/{bayId}/release")
+    public void releaseBay(@PathVariable UUID bayId) {
+        bookingService.releaseBay(bayId);
+    }
+
     @PostMapping("/api/moderator/bays/{bayId}/walk-ins")
     public void walkIn(@PathVariable UUID bayId,
                        @Valid @RequestBody WalkInRequest request) {

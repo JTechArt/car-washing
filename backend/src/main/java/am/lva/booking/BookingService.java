@@ -83,6 +83,16 @@ public class BookingService {
     }
 
     @Transactional
+    public void releaseBay(UUID bayId) {
+        var bay = bayRepository.findById(bayId)
+                .orElseThrow(() -> new IllegalArgumentException("Bay not found: " + bayId));
+        bay.setStatus(BayStatus.IDLE);
+        bayRepository.save(bay);
+        notificationService.broadcastBayStatus(
+                bay.getCarWash().getId(), bay.getId(), BayStatus.IDLE);
+    }
+
+    @Transactional
     public void createWalkIn(UUID bayId, WalkInRequest request) {
         var bay = bayRepository.findById(bayId).orElseThrow();
         var walkIn = new WalkIn();
