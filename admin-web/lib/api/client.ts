@@ -67,5 +67,9 @@ export const api = {
         method: 'POST',
         body: JSON.stringify({ estimatedDurationMinutes }),
       }),
+    releaseBay: (bayId: string) =>
+      request<void>(`/api/moderator/bays/${bayId}/release`, {
+        method: 'PUT',
+      }),
   },
 }

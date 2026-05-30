@@ -47,6 +47,9 @@ export default function ModeratorPage() {
   async function handleWalkIn(bayId: string, minutes: number) {
     if (minutes > 0) {
       await api.moderator.createWalkIn(bayId, minutes)
+    } else {
+      // Release bay (minutes=0 means release)
+      await api.moderator.releaseBay(bayId)
     }
     await loadBays()
   }
