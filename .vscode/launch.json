@@ -6,9 +6,15 @@
       "name": "Backend",
       "request": "launch",
       "mainClass": "am.lva.LvaApplication",
-      "projectName": "lva-backend",
       "cwd": "${workspaceFolder}/backend",
-      "preLaunchTask": "backend: build"
+      "preLaunchTask": "backend: build",
+      "vmArgs": "-Dspring.profiles.active=",
+      "env": {
+        "DB_URL": "jdbc:postgresql://localhost:5432/lva",
+        "DB_USER": "lva",
+        "DB_PASS": "lva",
+        "JWT_SECRET": "dev-secret-change-in-production-x"
+      }
     },
     {
       "type": "node-terminal",
