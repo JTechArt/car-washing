@@ -33,7 +33,7 @@ public class SecurityConfig {
                                 "/webjars/**"
                         ).permitAll()
                         .requestMatchers("/api/superadmin/**").hasRole("SUPER_ADMIN")
-                        .requestMatchers("/api/owner/**").hasAnyRole("OWNER", "SUPER_ADMIN")
+                        .requestMatchers("/api/owner/**").hasAnyRole("MODERATOR", "OWNER", "SUPER_ADMIN")
                         .requestMatchers("/api/moderator/**").hasAnyRole("MODERATOR", "OWNER", "SUPER_ADMIN")
                         .requestMatchers("/api/client/**").authenticated()
                         .anyRequest().authenticated())
