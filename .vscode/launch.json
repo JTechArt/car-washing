@@ -3,18 +3,11 @@
   "configurations": [
     {
       "type": "java",
-      "name": "Backend",
-      "request": "launch",
-      "mainClass": "am.lva.LvaApplication",
-      "cwd": "${workspaceFolder}/backend",
-      "preLaunchTask": "backend: build",
-      "vmArgs": "-Dspring.profiles.active=",
-      "env": {
-        "DB_URL": "jdbc:postgresql://localhost:5432/lva",
-        "DB_USER": "lva",
-        "DB_PASS": "lva",
-        "JWT_SECRET": "dev-secret-change-in-production-x"
-      }
+      "name": "Backend (Attach Debugger)",
+      "request": "attach",
+      "hostName": "localhost",
+      "port": 5005,
+      "preLaunchTask": "backend: run (debug)"
     },
     {
       "type": "node-terminal",
@@ -27,7 +20,7 @@
   "compounds": [
     {
       "name": "Backend + Admin Web",
-      "configurations": ["Backend", "Admin Web"],
+      "configurations": ["Backend (Attach Debugger)", "Admin Web"],
       "stopAll": true
     }
   ]

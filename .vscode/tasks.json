@@ -2,6 +2,44 @@
   "version": "2.0.0",
   "tasks": [
     {
+      "label": "backend: run (debug)",
+      "type": "shell",
+      "command": "${workspaceFolder}/backend/mvnw",
+      "args": [
+        "spring-boot:run",
+        "-Dspring-boot.run.jvmArguments=-agentlib:jdwp=transport=dt_socket,server=y,suspend=n,address=*:5005"
+      ],
+      "options": {
+        "cwd": "${workspaceFolder}/backend",
+        "env": {
+          "DB_URL": "jdbc:postgresql://localhost:5432/lva",
+          "DB_USER": "lva",
+          "DB_PASS": "lva",
+          "JWT_SECRET": "dev-secret-change-in-production-x"
+        }
+      },
+      "isBackground": true,
+      "presentation": {
+        "reveal": "always",
+        "panel": "dedicated",
+        "group": "backend"
+      },
+      "problemMatcher": {
+        "owner": "spring-boot",
+        "pattern": {
+          "regexp": "^(.*)$",
+          "file": 1,
+          "location": 2,
+          "message": 3
+        },
+        "background": {
+          "activeOnStart": true,
+          "beginsPattern": "\\[INFO\\] Attaching agents",
+          "endsPattern": "Started LvaApplication"
+        }
+      }
+    },
+    {
       "label": "backend: build",
       "type": "shell",
       "command": "${workspaceFolder}/backend/mvnw",
