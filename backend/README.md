@@ -26,10 +26,10 @@ am.lva/
 ## Start Locally
 
 ```bash
-# From repo root — start PostgreSQL only
+# From repo root — start PostgreSQL (creates the 'lva' database automatically)
 docker compose up postgres -d
 
-# Run the backend
+# Run the backend (Flyway will create all tables on first start)
 cd backend
 mvn spring-boot:run
 ```
@@ -37,6 +37,21 @@ mvn spring-boot:run
 The API will be available at http://localhost:8080.
 Swagger UI: http://localhost:8080/swagger-ui.html
 OpenAPI JSON: http://localhost:8080/v3/api-docs
+
+> **PostgreSQL requirement:** The database server must be PostgreSQL **13 or newer** because `gen_random_uuid()` is used for UUIDs. The `docker-compose.yml` uses PostgreSQL 16. If you are running PostgreSQL manually, make sure the `lva` database exists before starting the app:
+> ```sql
+> CREATE DATABASE lva;
+> ```
+
+## Database Migrations
+
+Flyway manages all schema changes under `src/main/resources/db/migration/`.  
+**Do not** run SQL scripts manually — let Flyway apply them on startup.
+
+If Flyway reports a failed migration (e.g. after a bad manual change), repair the history table:
+```bash
+mvn flyway:repair
+```
 
 ## Environment Variables
 
