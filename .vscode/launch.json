@@ -1,0 +1,28 @@
+{
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "type": "java",
+      "name": "Backend",
+      "request": "launch",
+      "mainClass": "am.lva.LvaApplication",
+      "projectName": "lva-backend",
+      "cwd": "${workspaceFolder}/backend",
+      "preLaunchTask": "backend: build"
+    },
+    {
+      "type": "node-terminal",
+      "name": "Admin Web",
+      "request": "launch",
+      "command": "npm run dev",
+      "cwd": "${workspaceFolder}/admin-web"
+    }
+  ],
+  "compounds": [
+    {
+      "name": "Backend + Admin Web",
+      "configurations": ["Backend", "Admin Web"],
+      "stopAll": true
+    }
+  ]
+}

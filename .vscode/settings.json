@@ -1,0 +1,16 @@
+{
+  "java.configuration.updateBuildConfiguration": "automatic",
+  "java.import.maven.enabled": true,
+  "java.import.exclusions": [
+    "**/admin-web/**",
+    "**/mobile/**",
+    "**/node_modules/**"
+  ],
+  "java.project.resourceFilters": ["node_modules", ".git"],
+  "files.exclude": {
+    "**/.classpath": true,
+    "**/.project": true,
+    "**/.settings": true,
+    "**/.factorypath": true
+  }
+}
