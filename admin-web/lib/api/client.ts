@@ -53,4 +53,19 @@ export const api = {
         body: JSON.stringify({ prices }),
       }),
   },
+  moderator: {
+    listCarWashes: () => request<CarWashResponse[]>('/api/owner/car-washes'),
+    listBays: (carWashId: string) =>
+      request<BayResponse[]>(`/api/owner/car-washes/${carWashId}/bays`),
+    updateBookingStatus: (bookingId: string, status: string) =>
+      request<void>(`/api/moderator/bookings/${bookingId}/status`, {
+        method: 'PUT',
+        body: JSON.stringify({ status }),
+      }),
+    createWalkIn: (bayId: string, estimatedDurationMinutes: number) =>
+      request<void>(`/api/moderator/bays/${bayId}/walk-ins`, {
+        method: 'POST',
+        body: JSON.stringify({ estimatedDurationMinutes }),
+      }),
+  },
 }

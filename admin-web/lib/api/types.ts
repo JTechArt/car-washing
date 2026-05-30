@@ -22,6 +22,8 @@ export interface BayResponse {
   id: string
   name: string
   status: BayStatus
+  activeBookingId: string | null
+  activeBookingStatus: BookingStatus | null
 }
 
 export interface PriceResponse {
@@ -35,4 +37,15 @@ export interface PriceResponse {
 export interface BayStatusMessage {
   bayId: string
   status: BayStatus
+}
+
+// Maps activeBookingStatus to the next action label and target status
+export function nextAction(bay: BayResponse): { label: string; targetStatus: BookingStatus } | null {
+  switch (bay.activeBookingStatus) {
+    case 'PENDING':   return { label: 'Mark Arrived',   targetStatus: 'ARRIVED' }
+    case 'ARRIVED':   return { label: 'Start Washing',  targetStatus: 'WASHING' }
+    case 'WASHING':   return { label: 'Mark Finishing', targetStatus: 'FINISHING' }
+    case 'FINISHING': return { label: 'Complete',       targetStatus: 'COMPLETED' }
+    default:          return null
+  }
 }
