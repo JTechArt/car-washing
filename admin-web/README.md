@@ -25,8 +25,8 @@ Visit http://localhost:3000. Log in with an OWNER or SUPER_ADMIN account.
 Create `.env.local` in the `admin-web/` directory:
 
 ```env
-NEXT_PUBLIC_API_URL=http://localhost:8080
-NEXT_PUBLIC_WS_URL=ws://localhost:8080/ws
+NEXT_PUBLIC_API_URL=http://localhost:9080
+NEXT_PUBLIC_WS_URL=ws://localhost:9080/ws
 ```
 
 ## Pages
@@ -46,7 +46,7 @@ With backend running:
 npm run generate-api
 ```
 
-Reads `http://localhost:8080/v3/api-docs` and writes typed TypeScript to `lib/api/generated/`.
+Reads `http://localhost:9080/v3/api-docs` and writes typed TypeScript to `lib/api/generated/`.
 
 ## Build
 

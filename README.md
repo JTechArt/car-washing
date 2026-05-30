@@ -16,7 +16,7 @@ Real-time car wash booking platform for Yerevan, Armenia. Eliminates phantom ava
                       │
          ┌────────────▼──────────────┐
          │      Spring Boot API      │
-         │   Java 21 · Port 8080     │
+         │   Java 21 · Port 9080     │
          │  /api/**  /ws (STOMP)     │
          └────────────┬──────────────┘
                       │
@@ -30,7 +30,7 @@ Real-time car wash booking platform for Yerevan, Armenia. Eliminates phantom ava
 
 | Folder | Description | Port |
 |---|---|---|
-| `backend/` | Java 21 + Spring Boot API | 8080 |
+| `backend/` | Java 21 + Spring Boot API | 9080 |
 | `admin-web/` | Next.js owner & super-admin portal | 3000 |
 | `mobile/` | Flutter client + moderator apps | n/a |
 | `docs/` | Architecture specs, plans, mockups | n/a |
@@ -51,7 +51,7 @@ cd admin-web && npm install && npm run dev
 ```
 
 Visit http://localhost:3000 for the admin portal.
-Backend API docs: http://localhost:8080/swagger-ui.html
+Backend API docs: http://localhost:9080/swagger-ui.html
 
 ## Environment Variables
 

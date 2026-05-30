@@ -7,7 +7,7 @@ Run these tests after starting the full stack. Check each item when verified.
 - [ ] PostgreSQL running: `docker compose up postgres -d`
 - [ ] Backend running: `cd backend && mvn spring-boot:run`
 - [ ] Admin web running: `cd admin-web && npm run dev` (use Node 20: `nvm use 20`)
-- [ ] Swagger UI accessible: http://localhost:8080/swagger-ui.html
+- [ ] Swagger UI accessible: http://localhost:9080/swagger-ui.html
 - [ ] Admin web accessible: http://localhost:3000
 
 ---
@@ -20,7 +20,7 @@ Run these tests after starting the full stack. Check each item when verified.
 
 ### 1.2 Register and promote an owner
 - [ ] POST `/api/auth/register` with `{"phone":"+37477000002","password":"pass123"}`
-- [ ] Update role in DB (via Adminer at http://localhost:8080/swagger-ui.html or psql):
+- [ ] Update role in DB (via Adminer at http://localhost:9080/swagger-ui.html or psql):
   ```sql
   UPDATE users SET role='OWNER' WHERE phone='+37477000002';
   ```
@@ -151,7 +151,7 @@ Using moderator token from 1.3:
 
 ### 6.3 Live bay status update (WebSocket)
 - [ ] Open DevTools → Network → WS tab
-- [ ] Confirm WebSocket connection to `ws://localhost:8080/ws` established
+- [ ] Confirm WebSocket connection to `ws://localhost:9080/ws` established
 - [ ] In Swagger UI, call PUT `/api/moderator/bookings/{BOOKING_ID}/status` with `{"status":"COMPLETED"}` using moderator token
 - [ ] Bay card in the dashboard updates within ~2 seconds WITHOUT page refresh
 

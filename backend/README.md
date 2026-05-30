@@ -34,9 +34,9 @@ cd backend
 mvn spring-boot:run
 ```
 
-The API will be available at http://localhost:8080.
-Swagger UI: http://localhost:8080/swagger-ui.html
-OpenAPI JSON: http://localhost:8080/v3/api-docs
+The API will be available at http://localhost:9080.
+Swagger UI: http://localhost:9080/swagger-ui.html
+OpenAPI JSON: http://localhost:9080/v3/api-docs
 
 > **PostgreSQL requirement:** The database server must be PostgreSQL **13 or newer** because `gen_random_uuid()` is used for UUIDs. The `docker-compose.yml` uses PostgreSQL 16. If you are running PostgreSQL manually, make sure the `lva` database exists before starting the app:
 > ```sql
@@ -90,7 +90,7 @@ Uses H2 in-memory database — no Docker required for tests.
 
 ## WebSocket
 
-Connect: `ws://localhost:8080/ws` (SockJS)
+Connect: `ws://localhost:9080/ws` (SockJS)
 Auth: Pass `Authorization: Bearer <token>` in STOMP CONNECT headers.
 Subscribe: `/topic/carwash/{carWashId}/bays` for live bay status.
 Payload: `{ "bayId": "uuid", "status": "IDLE|OCCUPIED|BLOCKED" }`

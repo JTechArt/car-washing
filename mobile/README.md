@@ -42,8 +42,8 @@ Set backend URL in `lib/core/config.dart` (create this file):
 
 ```dart
 class AppConfig {
-  static const String apiBaseUrl = 'http://localhost:8080';
-  static const String wsUrl = 'ws://localhost:8080/ws';
+  static const String apiBaseUrl = 'http://localhost:9080';
+  static const String wsUrl = 'ws://localhost:9080/ws';
 }
 ```
 

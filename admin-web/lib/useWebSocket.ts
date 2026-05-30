@@ -12,7 +12,7 @@ export function useBayStatus(carWashId: string | null) {
   useEffect(() => {
     if (!carWashId) return
     const token = getToken()
-    const wsUrl = (process.env.NEXT_PUBLIC_WS_URL ?? 'ws://localhost:8080/ws')
+    const wsUrl = (process.env.NEXT_PUBLIC_WS_URL ?? 'ws://localhost:9080/ws')
       .replace(/^http/, 'ws')
 
     const client = new Client({

@@ -6,7 +6,7 @@ import type {
   PriceResponse,
 } from './types'
 
-const BASE = process.env.NEXT_PUBLIC_API_URL ?? 'http://localhost:8080'
+const BASE = process.env.NEXT_PUBLIC_API_URL ?? 'http://localhost:9080'
 
 async function request<T>(path: string, options: RequestInit = {}): Promise<T> {
   const token = getToken()

@@ -26,7 +26,12 @@ public class SecurityConfig {
                 .sessionManagement(s -> s.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
                 .authorizeHttpRequests(auth -> auth
                         .requestMatchers("/api/auth/**").permitAll()
-                        .requestMatchers("/v3/api-docs/**", "/swagger-ui/**").permitAll()
+                        .requestMatchers(
+                                "/swagger-ui.html",
+                                "/swagger-ui/**",
+                                "/v3/api-docs/**",
+                                "/webjars/**"
+                        ).permitAll()
                         .requestMatchers("/api/superadmin/**").hasRole("SUPER_ADMIN")
                         .requestMatchers("/api/owner/**").hasAnyRole("OWNER", "SUPER_ADMIN")
                         .requestMatchers("/api/moderator/**").hasAnyRole("MODERATOR", "OWNER", "SUPER_ADMIN")
