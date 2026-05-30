@@ -5,14 +5,15 @@ export function middleware(request: NextRequest) {
   const token = request.cookies.get('lva_token')?.value
   const { pathname } = request.nextUrl
 
-  if (pathname.startsWith('/owner') || pathname.startsWith('/superadmin')) {
-    if (!token) {
-      return NextResponse.redirect(new URL('/login', request.url))
-    }
+  const protectedPaths = ['/owner', '/superadmin', '/moderator']
+  const isProtected = protectedPaths.some(p => pathname.startsWith(p))
+
+  if (isProtected && !token) {
+    return NextResponse.redirect(new URL('/login', request.url))
   }
   return NextResponse.next()
 }
 
 export const config = {
-  matcher: ['/owner/:path*', '/superadmin/:path*'],
+  matcher: ['/owner/:path*', '/superadmin/:path*', '/moderator/:path*'],
 }

@@ -21,6 +21,8 @@ export default function LoginPage() {
       setAuth(res.token, res.role)
       if (res.role === 'SUPER_ADMIN') {
         router.push('/superadmin')
+      } else if (res.role === 'MODERATOR') {
+        router.push('/moderator')
       } else {
         router.push('/owner')
       }
