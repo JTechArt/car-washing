@@ -1,22 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:hive_flutter/hive_flutter.dart';
+import 'client_app/app.dart';
 
-void main() {
+Future<void> main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await Hive.initFlutter();
   runApp(const ProviderScope(child: ClientApp()));
-}
-
-class ClientApp extends StatelessWidget {
-  const ClientApp({super.key});
-
-  @override
-  Widget build(BuildContext context) {
-    return MaterialApp(
-      title: 'Lva',
-      theme: ThemeData(
-        colorSchemeSeed: const Color(0xFF1B4F72),
-        useMaterial3: true,
-      ),
-      home: const Scaffold(body: Center(child: Text('Lva Client App'))),
-    );
-  }
 }
