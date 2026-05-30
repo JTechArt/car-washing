@@ -29,7 +29,7 @@ class ApiClient {
             message: resp.data?.toString() ?? error.message ?? 'Unknown error',
           );
         }
-        handler.next(error);
+        throw ApiException(statusCode: 0, message: error.message ?? 'Network error');
       },
     ));
 
