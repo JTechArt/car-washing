@@ -19,4 +19,7 @@ public interface BookingRepository extends JpaRepository<Booking, UUID> {
     List<Booking> findOverlapping(@Param("bayId") UUID bayId,
                                   @Param("startsAt") OffsetDateTime startsAt,
                                   @Param("endsAt") OffsetDateTime endsAt);
+
+    @org.springframework.data.jpa.repository.EntityGraph(attributePaths = {"bay", "bay.carWash", "vehicle"})
+    java.util.List<Booking> findByUserIdOrderByStartsAtDesc(java.util.UUID userId);
 }

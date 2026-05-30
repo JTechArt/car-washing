@@ -23,6 +23,11 @@ public class BookingController {
         return slotService.getAvailableSlots(carWashId, vehicleType, serviceType);
     }
 
+    @GetMapping("/api/client/bookings")
+    public List<BookingListResponse> myBookings(@AuthenticationPrincipal UUID userId) {
+        return bookingService.getMyBookings(userId);
+    }
+
     @PostMapping("/api/client/bookings")
     public BookingResponse createBooking(@Valid @RequestBody BookingRequest request,
                                          @AuthenticationPrincipal UUID userId) {

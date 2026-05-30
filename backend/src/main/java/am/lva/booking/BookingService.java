@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.time.OffsetDateTime;
+import java.util.List;
 import java.util.UUID;
 
 @Service
@@ -21,6 +22,12 @@ public class BookingService {
     private final WalkInRepository walkInRepository;
     private final UserRepository userRepository;
     private final NotificationService notificationService;
+
+    @Transactional(readOnly = true)
+    public List<BookingListResponse> getMyBookings(UUID userId) {
+        return bookingRepository.findByUserIdOrderByStartsAtDesc(userId).stream()
+                .map(BookingListResponse::from).toList();
+    }
 
     @Transactional
     public BookingResponse create(BookingRequest request, UUID userId) {
