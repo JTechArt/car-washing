@@ -2,16 +2,40 @@
   "version": "2.0.0",
   "tasks": [
     {
-      "label": "backend: run (debug)",
+      "label": "postgres: ensure",
+      "type": "shell",
+      "command": "bash",
+      "args": [
+        "-c",
+        "if nc -z localhost 5432 2>/dev/null; then echo 'Postgres already reachable on :5432'; elif docker info >/dev/null 2>&1; then docker compose up postgres -d; else echo 'WARNING: Postgres not reachable and Docker is unavailable. Start Postgres manually on :5432.'; fi"
+      ],
+      "options": {
+        "cwd": "${workspaceFolder}"
+      },
+      "presentation": {
+        "reveal": "silent",
+        "panel": "shared",
+        "close": true
+      },
+      "problemMatcher": []
+    },
+    {
+      "label": "backend: run (local debug)",
+      "dependsOn": ["postgres: ensure"],
+      "dependsOrder": "sequence",
       "type": "shell",
       "command": "${workspaceFolder}/backend/mvnw",
       "args": [
         "spring-boot:run",
-        "-Dspring-boot.run.jvmArguments=-agentlib:jdwp=transport=dt_socket,server=y,suspend=n,address=*:5005"
+        "-Dspring-boot.run.profiles=${config:lva.dev.springProfile}",
+        "-Dspring-boot.run.arguments=--server.port=${config:lva.dev.backendPort}",
+        "-Dspring-boot.run.jvmArguments=-agentlib:jdwp=transport=dt_socket,server=y,suspend=n,address=*:${config:lva.dev.debugPort}"
       ],
       "options": {
         "cwd": "${workspaceFolder}/backend",
         "env": {
+          "SPRING_PROFILES_ACTIVE": "${config:lva.dev.springProfile}",
+          "SERVER_PORT": "${config:lva.dev.backendPort}",
           "DB_URL": "jdbc:postgresql://localhost:5432/lva",
           "DB_USER": "lva",
           "DB_PASS": "lva",
@@ -34,7 +58,7 @@
         },
         "background": {
           "activeOnStart": true,
-          "beginsPattern": "\\[INFO\\] Attaching agents",
+          "beginsPattern": ".",
           "endsPattern": "Started LvaApplication"
         }
       }
@@ -59,17 +83,21 @@
       "problemMatcher": ["$javac"]
     },
     {
-      "label": "admin-web: dev",
+      "label": "admin-web: dev (local)",
       "type": "shell",
-      "command": "npm",
-      "args": ["run", "dev"],
+      "command": "npm run dev -- -p ${config:lva.dev.adminWebPort}",
       "options": {
-        "cwd": "${workspaceFolder}/admin-web"
+        "cwd": "${workspaceFolder}/admin-web",
+        "env": {
+          "NEXT_PUBLIC_API_URL": "http://localhost:${config:lva.dev.backendPort}",
+          "NEXT_PUBLIC_WS_URL": "ws://localhost:${config:lva.dev.backendPort}/ws"
+        }
       },
       "isBackground": true,
       "presentation": {
         "reveal": "always",
-        "panel": "dedicated"
+        "panel": "dedicated",
+        "group": "admin-web"
       },
       "problemMatcher": {
         "owner": "nextjs",
@@ -82,7 +110,7 @@
         "background": {
           "activeOnStart": true,
           "beginsPattern": ".",
-          "endsPattern": "(ready|started server|Local:)"
+          "endsPattern": "(Ready in|ready - started server on|Local:)"
         }
       }
     }

@@ -1,6 +1,14 @@
 {
+  "lva.dev.backendPort": 9080,
+  "lva.dev.adminWebPort": 3400,
+  "lva.dev.debugPort": 5005,
+  "lva.dev.springProfile": "local",
   "java.configuration.updateBuildConfiguration": "automatic",
   "java.import.maven.enabled": true,
+  "java.import.maven.recursive": true,
+  "maven.executable.path": "${workspaceFolder}/backend/mvnw",
+  "java.debug.settings.hotCodeReplace": "auto",
+  "java.debug.settings.console": "integratedTerminal",
   "java.import.exclusions": [
     "**/admin-web/**",
     "**/mobile/**",

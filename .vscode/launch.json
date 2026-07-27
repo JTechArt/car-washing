@@ -3,24 +3,40 @@
   "configurations": [
     {
       "type": "java",
-      "name": "Backend (Attach Debugger)",
+      "name": "Backend (local)",
       "request": "attach",
       "hostName": "localhost",
-      "port": 5005,
-      "preLaunchTask": "backend: run (debug)"
+      "port": "${config:lva.dev.debugPort}",
+      "preLaunchTask": "backend: run (local debug)"
     },
     {
       "type": "node-terminal",
-      "name": "Admin Web",
+      "name": "Admin Web (local)",
       "request": "launch",
-      "command": "npm run dev",
+      "command": "NEXT_PUBLIC_API_URL=http://localhost:${config:lva.dev.backendPort} NEXT_PUBLIC_WS_URL=ws://localhost:${config:lva.dev.backendPort}/ws npm run dev -- -p ${config:lva.dev.adminWebPort}",
       "cwd": "${workspaceFolder}/admin-web"
+    },
+    {
+      "type": "java",
+      "name": "Backend (Java launch)",
+      "request": "launch",
+      "mainClass": "am.lva.LvaApplication",
+      "cwd": "${workspaceFolder}/backend",
+      "env": {
+        "SPRING_PROFILES_ACTIVE": "${config:lva.dev.springProfile}",
+        "SERVER_PORT": "${config:lva.dev.backendPort}",
+        "DB_URL": "jdbc:postgresql://localhost:5432/lva",
+        "DB_USER": "lva",
+        "DB_PASS": "lva",
+        "JWT_SECRET": "dev-secret-change-in-production-x"
+      },
+      "preLaunchTask": "postgres: ensure"
     }
   ],
   "compounds": [
     {
-      "name": "Backend + Admin Web",
-      "configurations": ["Backend (Attach Debugger)", "Admin Web"],
+      "name": "Full Stack (local)",
+      "configurations": ["Backend (local)", "Admin Web (local)"],
       "stopAll": true
     }
   ]

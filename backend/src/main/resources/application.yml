@@ -3,8 +3,8 @@ spring:
     name: lva-backend
   datasource:
     url: ${DB_URL:jdbc:postgresql://localhost:5432/lva}
-    username: ${DB_USER:postgres}
-    password: ${DB_PASS:postgres}
+    username: ${DB_USER:lva}
+    password: ${DB_PASS:lva}
   jpa:
     hibernate:
       ddl-auto: validate
